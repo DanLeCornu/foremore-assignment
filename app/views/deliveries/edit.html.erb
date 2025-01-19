@@ -1,0 +1,23 @@
+<% content_for :title, "Editing delivery" %>
+
+<div class="flex flex-col gap-8 justify-center items-center w-full">
+
+  <p class="text-green-500"><%= notice %></p>
+
+  <h1>Delivery <%= @delivery.id %></h1>
+
+  <%= render "form", delivery: @delivery %>
+
+  <%= button_to @delivery, method: :delete, class: "btn-destroy flex gap-2" do %>
+  <%= lucide_icon('trash') %>
+  DELETE
+  <% end %>
+
+  <br>
+
+
+  <div>
+    <%= link_to "Back to deliveries", deliveries_path %>
+  </div>
+
+</div>

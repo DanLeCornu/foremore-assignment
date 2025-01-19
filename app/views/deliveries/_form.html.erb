@@ -1,0 +1,47 @@
+<%= form_with(model: delivery) do |form| %>
+<% if delivery.errors.any? %>
+<div style="color: red">
+  <h2><%= pluralize(delivery.errors.count, "error") %> prohibited this delivery from being saved:</h2>
+
+  <ul>
+    <% delivery.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div>
+  <%= form.label :pickup_address, style: "display: block" %>
+  <%= form.text_field :pickup_address, required: true %>
+</div>
+
+<div>
+  <%= form.label :delivery_address, style: "display: block" %>
+  <%= form.text_field :delivery_address, required: true %>
+</div>
+
+<div>
+  <%= form.label :weight, "Weight (kg)", style: "display: block" %>
+  <%= form.number_field :weight, step: "0.01", min: 0, required: true %>
+</div>
+
+<div>
+  <%= form.label :distance, "Distance (km)", style: "display: block" %>
+  <%= form.number_field :distance, step: "0.01", min: 0, required: true %>
+</div>
+
+<div>
+  <%= form.label :scheduled_time, style: "display: block" %>
+  <%= form.datetime_field :scheduled_time, required: true, placeholder: "Select a date & time" %>
+</div>
+
+<div>
+  <%= form.label :driver_name, style: "display: block" %>
+  <%= form.text_field :driver_name %>
+</div>
+
+<button class="btn-primary mt-4">
+  <%= form.submit class: "uppercase" %>
+</button>
+<% end %>

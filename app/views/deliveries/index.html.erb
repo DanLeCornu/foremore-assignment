@@ -1,0 +1,76 @@
+<% content_for :title, "Deliveries" %>
+
+<div class="flex flex-col gap-4 w-full">
+
+  <p class="text-green-500"><%= notice %></p>
+
+  <div class="flex md:flex-row flex-col gap-4">
+    <h1>Deliveries</h1>
+    <div class="flex gap-4 sm:items-center items-start justify-between w-full sm:flex-row flex-col">
+      <%= form_tag deliveries_path, method: :get do %>
+      <div class="max-h-10">
+        <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+      </div>
+      <% end %>
+      <%= link_to new_delivery_path do %>
+      <button class="btn-primary">
+        <div class="flex gap-1">
+          <%= lucide_icon('plus') %>
+          New delivery
+        </div>
+      </button>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="deliveries">
+    <%= render "shared/table", {
+      records: @deliveries,
+      total_pages: @total_pages,
+      count: @count,
+      columns: [
+        {
+          label: "ID",
+          value: ->(delivery) { delivery.id }
+        },
+        {
+          label: "Pickup Address",
+          value: ->(delivery) { delivery.pickup_address }
+        },
+        {
+          label: "Delivery Address",
+          value: ->(delivery) { delivery.delivery_address }
+        },
+        {
+          label: "Weight (kg)",
+          value: ->(delivery) { delivery.weight }
+        },
+        {
+          label: "Distance (km)",
+          value: ->(delivery) { delivery.distance }
+        },
+        {
+          label: "Scheduled Time",
+          value: ->(delivery) { delivery.scheduled_time.strftime("%Y-%m-%d %H:%M") }
+        },
+        {
+          label: "Driver Name",
+          value: ->(delivery) { delivery.driver_name }
+        },
+        {
+          label: "Cost (EUR)",
+          value: ->(delivery) { number_with_precision(delivery.cost, precision: 2, delimiter: ',') }
+        }
+      ],
+      actions: ->(delivery) { [
+        link_to("Edit", edit_delivery_path(delivery)),
+        button_to("Delete", delivery_path(delivery), method: :delete, class: "btn-destroy px-2 py-1")
+    ] }
+    } %>
+  </div>
+
+  <div class="flex gap-2 items-baseline justify-end mt-8">
+    <p>Total cost:</p>
+    <p class="text-2xl font-bold">EUR <%= number_with_precision(@total_cost, precision: 2, delimiter: ',') %></p>
+    <div>
+    </div>

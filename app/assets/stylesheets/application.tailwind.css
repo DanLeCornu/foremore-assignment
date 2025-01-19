@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@layer base {
+  html {
+    font-family: "Montserrat", system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  button {
+    @apply py-4 px-6 rounded-full;
+  }
+  button[disabled] {
+    @apply opacity-50 cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply bg-[#06168F] text-white;
+  }
+  .btn-outline {
+    @apply bg-transparent border border-gray-300 text-[#06168F];
+  }
+  .btn-icon {
+    @apply bg-transparent border border-gray-300 p-2 rounded-full text-[#06168F];
+  }
+  .btn-destroy {
+    @apply bg-red-500 text-white;
+  }
+  h1 {
+    @apply text-5xl font-extrabold;
+  }
+  a {
+    @apply text-blue-500 underline;
+  }
+  p {
+    @apply text-sm;
+  }
+  input:not([type="submit"]) {
+    @apply border border-gray-300 rounded-md p-2 w-full;
+  }
+  input[type="submit"] {
+    @apply cursor-pointer;
+  }
+  form {
+    @apply flex flex-col gap-2;
+  }
+}
