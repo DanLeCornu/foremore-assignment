@@ -12,7 +12,7 @@
 1. Clone the repo, cd into dir
 2. install deps `bundle install`
 3. setup db and seed `rails db:setup`
-4. start dev server `bin/dev`
+4. start dev server `bin/dev`, go to localhost:3000
 
 ## Prerequisites
 
