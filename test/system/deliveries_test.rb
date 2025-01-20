@@ -12,9 +12,8 @@ class DeliveriesTest < ApplicationSystemTestCase
 
   test "should create delivery" do
     visit deliveries_url
-    click_on "New delivery"
+    click_on "New delivery", match: :first
 
-    fill_in "Cost", with: @delivery.cost
     fill_in "Delivery address", with: @delivery.delivery_address
     fill_in "Distance", with: @delivery.distance
     fill_in "Driver name", with: @delivery.driver_name
@@ -28,10 +27,8 @@ class DeliveriesTest < ApplicationSystemTestCase
   end
 
   test "should update Delivery" do
-    visit delivery_url(@delivery)
-    click_on "Edit this delivery", match: :first
+    visit edit_delivery_url(@delivery)
 
-    fill_in "Cost", with: @delivery.cost
     fill_in "Delivery address", with: @delivery.delivery_address
     fill_in "Distance", with: @delivery.distance
     fill_in "Driver name", with: @delivery.driver_name
@@ -45,8 +42,8 @@ class DeliveriesTest < ApplicationSystemTestCase
   end
 
   test "should destroy Delivery" do
-    visit delivery_url(@delivery)
-    click_on "Destroy this delivery", match: :first
+    visit edit_delivery_url(@delivery)
+    click_on "DELETE", match: :first
 
     assert_text "Delivery was successfully destroyed"
   end

@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Foremore technical assignment
 
-Things you may want to cover:
+## Key Dependencies
 
-* Ruby version
+* Ruby 3.4.1
+* Rails 8.0.1
 
-* System dependencies
+## Setup
 
-* Configuration
+1. Clone the repo, cd into dir
+2. install deps `bundle install`
+3. setup db and seed `rails db:setup`
+4. start dev server `bin/dev`
 
-* Database creation
+## Prerequisites
 
-* Database initialization
+* Ruby ~v3 is installed 
+* PostgreSQL ~v15 is installed and running locally
 
-* How to run the test suite
+## Testing
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* `rake test:all`

@@ -5,17 +5,24 @@
   <p class="text-green-500"><%= notice %></p>
 
   <div class="flex md:flex-row flex-col gap-4">
-    <h1>Deliveries</h1>
+    <h1 class="leading-[1.2]">Deliveries</h1>
     <div class="flex gap-4 sm:items-center items-start justify-between w-full sm:flex-row flex-col">
-      <%= form_tag deliveries_path, method: :get do %>
-      <div class="max-h-10">
+      <div class="flex gap-2 items-center">
+        <%= form_tag url_for(safe_params), method: :get do %>
+        <% safe_params.except(:search).each do |key, value| %>
+        <%= hidden_field_tag key, value %>
+        <% end %>
         <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+        <% end %>
+
+        <% if params[:search] %>
+        <%= link_to "clear", url_for(safe_params.merge(search: nil)) %>
+        <% end %>
       </div>
-      <% end %>
       <%= link_to new_delivery_path do %>
       <button class="btn-primary">
         <div class="flex gap-1">
-          <%= lucide_icon('plus') %>
+          <%= lucide_icon("plus") %>
           New delivery
         </div>
       </button>
@@ -59,7 +66,7 @@
         },
         {
           label: "Cost (EUR)",
-          value: ->(delivery) { number_with_precision(delivery.cost, precision: 2, delimiter: ',') }
+          value: ->(delivery) { number_with_precision(delivery.cost, precision: 2, delimiter: ",") }
         }
       ],
       actions: ->(delivery) { [
@@ -71,6 +78,6 @@
 
   <div class="flex gap-2 items-baseline justify-end mt-8">
     <p>Total cost:</p>
-    <p class="text-2xl font-bold">EUR <%= number_with_precision(@total_cost, precision: 2, delimiter: ',') %></p>
+    <p class="text-2xl font-bold">EUR <%= number_with_precision(@total_cost, precision: 2, delimiter: ",") %></p>
     <div>
     </div>

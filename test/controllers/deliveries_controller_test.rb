@@ -20,7 +20,7 @@ class DeliveriesControllerTest < ActionDispatch::IntegrationTest
       post deliveries_url, params: { delivery: { cost: @delivery.cost, delivery_address: @delivery.delivery_address, distance: @delivery.distance, driver_name: @delivery.driver_name, pickup_address: @delivery.pickup_address, scheduled_time: @delivery.scheduled_time, weight: @delivery.weight } }
     end
 
-    assert_redirected_to delivery_url(Delivery.last)
+    assert_redirected_to edit_delivery_url(Delivery.last)
   end
 
   test "should show delivery" do
@@ -35,7 +35,7 @@ class DeliveriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should update delivery" do
     patch delivery_url(@delivery), params: { delivery: { cost: @delivery.cost, delivery_address: @delivery.delivery_address, distance: @delivery.distance, driver_name: @delivery.driver_name, pickup_address: @delivery.pickup_address, scheduled_time: @delivery.scheduled_time, weight: @delivery.weight } }
-    assert_redirected_to delivery_url(@delivery)
+    assert_redirected_to edit_delivery_url(@delivery)
   end
 
   test "should destroy delivery" do

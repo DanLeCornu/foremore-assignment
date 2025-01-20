@@ -14,11 +14,9 @@
   <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
   <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
-
   <%# <link rel="icon" href="/icon.png" type="image/png"> %>
   <%# <link rel="icon" href="/icon.svg" type="image/svg+xml"> %>
   <%# <link rel="apple-touch-icon" href="/icon.png"> %>
-
 
   <link href="https://cdn.prod.website-files.com/642057cbf2602a2510ea86d9/6443a0c16d9af5f1a3378755_f-32x32.jpg" rel="shortcut icon" type="image/x-icon">
 
@@ -30,7 +28,7 @@
 
 <body class="flex flex-col min-h-full">
   <%= render "shared/nav" %>
-  <main class="container mx-auto py-24 px-4 flex max-w-screen-xl flex-grow">
+  <main class="container mx-auto pt-8 pb-24 px-4 flex max-w-screen-xl flex-grow">
     <%= yield %>
   </main>
   <%= render "shared/footer" %>

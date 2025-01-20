@@ -1,12 +1,12 @@
 class DeliveriesController < ApplicationController
   before_action :set_delivery, only: %i[ show edit update destroy ]
   before_action :set_total_cost, only: %i[ index total_cost ]
-  
+
   # GET /deliveries or /deliveries.json
   def index
     @count = Delivery.search(params[:search]).count
-    @page = [params[:page].presence.to_i, 1].max
-    @take = [params[:take].presence.to_i, 10].max
+    @page = [ params[:page].presence.to_i, 1 ].max
+    @take = [ params[:take].presence.to_i, 10 ].max
     @total_pages = (@count.to_f / @take).ceil
     offset = @take * (@page - 1)
     @deliveries = Delivery.search(params[:search])

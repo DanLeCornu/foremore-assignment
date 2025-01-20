@@ -8,13 +8,12 @@
 
   <%= render "form", delivery: @delivery %>
 
-  <%= button_to @delivery, method: :delete, class: "btn-destroy flex gap-2" do %>
-  <%= lucide_icon('trash') %>
+  <%= button_to @delivery, method: :delete, class: "btn-destroy flex gap-2 items-center" do %>
+  <%= lucide_icon("trash", size: 18) %>
   DELETE
   <% end %>
 
   <br>
-
 
   <div>
     <%= link_to "Back to deliveries", deliveries_path %>

@@ -22,10 +22,9 @@ class Delivery < ApplicationRecord
 
   def self.search(search)
     if search
-      where("pickup_address LIKE ? OR delivery_address LIKE ? OR driver_name LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
+      where("LOWER(pickup_address) LIKE ? OR LOWER(delivery_address) LIKE ? OR LOWER(driver_name) LIKE ?", "%#{search.downcase}%", "%#{search.downcase}%", "%#{search.downcase}%")
     else
       all
     end
   end
 end
-
